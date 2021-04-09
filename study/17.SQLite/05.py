@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
         df = pd.DataFrame(kiwoom.ohlcv, columns=['open', 'high', 'low', 'close', 'volume'], index=kiwoom.ohlcv['date'])
 
-        con = sqlite3.connect('C:/Users/xjord/OneDrive/문서/GitHub/KSHTS/study/17.SQLite/kospi.db')
+        con = sqlite3.connect('C:/My Documents/GitHub/KSHTS/study/17.SQLite/kospi.db')
 
         df.to_sql('039490', con, if_exists='replace')
 
