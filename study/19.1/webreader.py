@@ -23,5 +23,21 @@ def get_3year_treasury():
     print(treasury_3year)
     return treasury_3year
 
+#현금 배당 수익률
+def get_dividend_yield(code):
+    url = "http://companyinfo.stock.naver.com/company/c1010001.aspx?cmp_cd=" + code
+    html = requests.get(url).text
+
+    soup = BeautifulSoup(html, 'html5lib')
+    dt_data = soup.select("td dl dt")
+
+    dividend_yield = dt_data[-2].text
+    dividend_yield = dividend_yield.split(' ')[1]
+    dividend_yield = dividend_yield[:-1]
+
+    return dividend_yield
+
 if __name__ == "__main__":
-    get_3year_treasury()
+    #get_3year_treasury()
+    dividend_yield = get_dividend_yield('058470')
+    print(dividend_yield)
